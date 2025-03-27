@@ -1,4 +1,4 @@
-function [tsfc, area_in, fuel_flow] = calc(BR,pfr,T04)
+function [tsfc, area_in, fuel_flow, area_out] = calc(BR,pfr,T04)
 
 % Atmospheric Conditions
 [Tatm, ~, Patm, rhoAtm] = atmosisa(8500);
@@ -96,4 +96,7 @@ Thrust = 8000;
 area_in = Thrust/(st*rhoAtm*V);
 
 fuel_flow = f * (rhoAtm * V * area_in);
+
+rho_exit = P06 / (R * T7);
+area_out = (fuel_flow + (rhoAtm * V * area_in)) / (rho_exit * ue); % check this
 end
