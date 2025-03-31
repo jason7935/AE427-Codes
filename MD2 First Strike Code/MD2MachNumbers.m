@@ -1,7 +1,7 @@
 function [Mmin,Mmax] = MD2MachNumbers(d,Tmax,Qf,gamma,R,Ta,Pa,rhoa)
 
 % Minimum Mach Number
-M = 0.75; % Initial Guess
+M = 1.5; % Initial Guess
 dM = 0.005;
 while true
     Drag = MD2DragFunction(d,M,gamma,R,Ta,rhoa);
@@ -27,8 +27,9 @@ while true
         M = Mnew;
     end
 end
+% Mmax = 0;
 
-M = 4; % Initial Guess
+M = 5; % Initial Guess
 while true
     Drag = MD2DragFunction(d,M,gamma,R,Ta,rhoa);
     [Thrust,~,~] = MD2ThrustFunction(d,M,Tmax,Qf,gamma,R,Ta,Pa,rhoa);

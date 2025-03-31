@@ -2,7 +2,7 @@ function [Range] = MD2RangeFunction(d,Tmax,Qf,Mstart,mFuel,mRam,gamma,R,Ta,Pa,rh
 i = 1;
 M(1) = Mstart;
 a = sqrt(gamma*R*Ta); % Speed of Sound
-dt = 0.5; % Seconds
+dt = 0.1; % Seconds
 Range = 0;
 while true
     Drag = MD2DragFunction(d,M(i),gamma,R,Ta,rhoa);

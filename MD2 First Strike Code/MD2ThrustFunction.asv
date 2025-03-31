@@ -51,11 +51,9 @@ Te = T0e/((P0e/Pe)^((gamma-1)/gamma));
 % Other Exit Properties
 Msquared = (2/(gamma-1))*((T0e/Te)-1); % Mach Exit
 Me = sqrt(Msquared);
-
-% fprintf("test")
-if imag(Me) ~= 0
-    fprintf('fail')
-end
+if imag(Me)
+    Thrust = 0;
+    
 
 %A = 1 + (gamma-1)/2*M^2;
 %B = rd*rc*rn^((gamma-1)/gamma);
@@ -65,15 +63,11 @@ end
 %a2 = 1 + M^2/a1;
 
 %Me = 
-
 ae = sqrt(gamma*R*Te); % Speed Sound Exit
 Ve = Me*ae; % Velocity Exit
 
 % Calculate Thrust
 Thrust = ((1+f)*Ve - Va)*mdota; % Thrust [N]
-Thrust = real(Thrust);
-
-
 
 
 

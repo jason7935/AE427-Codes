@@ -61,12 +61,11 @@ end
 
 %% Plotting Range
 figure(1);
-Range = Range/1000;
 imagesc(d, Tmax, Range');
 colorbar;
 xlabel('Diameter (m)');
 ylabel('Temperature (K)');
-title('Ramjet Range (km) Heatmap');
+title('Ramjet Range (m) Heatmap');
 set(gca, 'YDir', 'normal'); % Ensure the y-axis is oriented correctly (bottom to top)
 colormap jet; % Optional: Apply a color map
 %% Plotting Cruise Speed
@@ -81,12 +80,12 @@ colormap jet; % Optional: Apply a color map
 %% Plotting Weighted Design Study
 Rangemax = max(max(Range));
 Rangemin = min(min(Range));
-Mmaxmax = max(max(Mmax));
-Mmaxmin = min(min(Mmax));
+Mmaxmax = max(max(Range));
+Mmaxmin = min(min(Range));
 
-b = (Range-Rangemin)/(Rangemax-Rangemin);
-c = (Mmax-Mmaxmin)/(Mmaxmax-Mmaxmin);
-k = 0.75*b + 0.25*c;
+b = Range-Rangemin/max(max(Range));
+c = Mmax./max(max(Mmax));
+k = b.*c;
 figure(3);
 imagesc(d, Tmax, k');
 colorbar;

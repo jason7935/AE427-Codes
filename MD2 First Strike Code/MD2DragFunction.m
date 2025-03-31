@@ -21,7 +21,7 @@ Sref = (pi*d^2)/4;
 
 % Calculate Drag using provided model
 Cd_wave = (1.75 + (1.93/M^2))*(atan(0.5/(L_Nose/d)))^1.69;
-Cd_friction = 0.1*(L/d)^1.5*(M/(0.0685*q*L)^0.2);
+Cd_friction = 0.1*(L/d)^1.5*(M/(0.0685*q*L))^0.2;
 
 Cd = Cd_wave + Cd_friction;
 
